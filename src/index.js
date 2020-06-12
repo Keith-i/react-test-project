@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+// import App from './App';
 
 import logger from 'redux-logger'
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk' // 处理异步
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -14,7 +14,7 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logge
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    {/* <App /> */}
   </Provider>,
   document.getElementById('root')
 );
