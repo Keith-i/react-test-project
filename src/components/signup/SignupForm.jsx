@@ -8,7 +8,9 @@ class SignupForm extends React.Component {
       username: '',
       email: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      error: {},
+      isLoading: false
     }
   }
 
@@ -21,7 +23,12 @@ class SignupForm extends React.Component {
   onSubmit = (e) => {
     e.preventDefault()
     console.log(this.state)
-    this.props.signupActions.userSignupRequest(this.state)
+    this.props.signupActions.userSignupRequest(this.state).then(
+      () => {},
+      ({response}) => {
+        console.log(response, 'response')
+      }
+    )
   }
 
   render() {
