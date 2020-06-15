@@ -10,11 +10,19 @@ import { Provider } from 'react-redux'
 
 import rootReducer from './reducers'
 
+import routes from './routes'
+import { BrowserRouter } from 'react-router-dom'
+
+import NavigationBar from './components/NavigationBar'
+
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger, thunk)))
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <App /> */}
+    <BrowserRouter routes={ routes }>
+      <NavigationBar />
+      { routes }
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );
