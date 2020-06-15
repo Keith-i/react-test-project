@@ -20,7 +20,7 @@ const validatorInput = (data) => {
     errors.password = "请填写密码"
   }
   if (validator.isEmpty(data.passwordConfirmation)) {
-    errors.password = "请确认密码"
+    errors.passwordConfirmation = "请确认密码"
   }
   if (!validator.equals(data.password, data.passwordConfirmation)) {
     errors.passwordConfirmation = "两次密码不相同"
