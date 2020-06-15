@@ -21,6 +21,7 @@ class SignupForm extends React.Component {
   onSubmit = (e) => {
     e.preventDefault()
     console.log(this.state)
+    this.props.signupActions.userSignupRequest(this.state)
   }
 
   render() {
