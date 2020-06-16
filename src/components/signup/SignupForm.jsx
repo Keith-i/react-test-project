@@ -9,7 +9,7 @@ class SignupForm extends React.Component {
       email: '',
       password: '',
       passwordConfirmation: '',
-      error: {},
+      errors: {},
       isLoading: false
     }
   }
@@ -24,14 +24,24 @@ class SignupForm extends React.Component {
     e.preventDefault()
     console.log(this.state)
     this.props.signupActions.userSignupRequest(this.state).then(
-      () => {},
+      (res) => {
+        this.setState({
+          errors: {},
+          isLoading: false
+        })
+      },
       ({response}) => {
         console.log(response, 'response')
+        this.setState({
+          errors: response.data,
+          isLoading: false
+        })
       }
     )
   }
 
   render() {
+    const { errors, isLoading } = this.state
     return (
       <form onSubmit={ this.onSubmit }>
         <h1>Join our community</h1>
@@ -44,6 +54,9 @@ class SignupForm extends React.Component {
            onChange={ this.onChange }
            className="form-control"
           />
+          {
+            errors.username && <span className="form-text text-muted">{ errors.username }</span>
+          }
         </div>
 
         <div className="form-group">
@@ -55,6 +68,9 @@ class SignupForm extends React.Component {
            onChange={ this.onChange }
            className="form-control"
           />
+          {
+            errors.email && <span className="form-text text-muted">{ errors.email }</span>
+          }
         </div>
 
         <div className="form-group">
@@ -66,6 +82,9 @@ class SignupForm extends React.Component {
            onChange={ this.onChange }
            className="form-control"
           />
+          {
+            errors.password && <span className="form-text text-muted">{ errors.password }</span>
+          }
         </div>
 
         <div className="form-group">
@@ -77,6 +96,9 @@ class SignupForm extends React.Component {
            onChange={ this.onChange }
            className="form-control"
           />
+          {
+            errors.passwordConfirmation && <span className="form-text text-muted">{ errors.passwordConfirmation }</span>
+          }
         </div>
 
         <div className="form-group">
