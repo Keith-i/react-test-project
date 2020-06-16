@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
 class SignupForm extends React.Component {
 
@@ -29,6 +30,7 @@ class SignupForm extends React.Component {
           errors: {},
           isLoading: false
         })
+        this.props.history.push('/')
       },
       ({response}) => {
         console.log(response, 'response')
@@ -109,4 +111,4 @@ class SignupForm extends React.Component {
   }
 }
 
-export default SignupForm
+export default withRouter(SignupForm)
