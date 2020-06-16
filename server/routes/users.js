@@ -36,7 +36,12 @@ router.post('/', (req, res) => {
   console.log(req.body, 'aaa')
   const {errors, isValid} = validatorInput(req.body)
   if (!isValid) {
+    console.log(errors, 'aaaasss')
     res.status(400).json(errors)
+  } else {
+    res.status(200).json({
+      aa: 'xx'
+    })
   }
 })
 
