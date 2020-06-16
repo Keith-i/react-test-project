@@ -30,6 +30,11 @@ class SignupForm extends React.Component {
           errors: {},
           isLoading: false
         })
+        // 添加数据到redux
+        this.props.flashActions.addFlashMessage({
+          type: 'success',
+          text: '注册成功，欢迎你的加入！'
+        })
         this.props.history.push('/')
       },
       ({response}) => {

@@ -14,6 +14,7 @@ import routes from './routes'
 import { BrowserRouter } from 'react-router-dom'
 
 import NavigationBar from './components/NavigationBar'
+import FlashMessageList from './components/flash/flashMessagesList'
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(logger, thunk)))
 
@@ -21,6 +22,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter routes={ routes }>
       <NavigationBar />
+      <FlashMessageList />
       { routes }
     </BrowserRouter>
   </Provider>,
